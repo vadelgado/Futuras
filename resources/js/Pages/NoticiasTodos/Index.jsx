@@ -58,7 +58,7 @@ export default function Welcome({ auth, noticias, galeriaNoticias }) {
             </div>
             </main>
             </div>
-            <Footer/>
+            <Footer auth={auth}/>
 
             <style>{`
                 .antialiased {

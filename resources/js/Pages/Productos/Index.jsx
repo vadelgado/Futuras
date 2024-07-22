@@ -17,7 +17,7 @@ import Textarea2 from "@/Components/Textarea2";
 
 
 
-export default function Dashboard({ auth, productos }) {
+export default function Dashboard({ auth, productos }) { 
     const [modal, setModal] = useState(false);
     const [title, setTitle] = useState("");
     const [operation, setOperation] = useState(1);
