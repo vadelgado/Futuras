@@ -21,3 +21,5 @@ yarn-error.log
 /Dockerfile
 /apache2
 /apache2/laravel.conf
+/public_html
+/DO_NOT_UPLOAD_HERE
