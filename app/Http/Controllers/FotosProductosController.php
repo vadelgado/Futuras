@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FotosProductos;
-use App\Models\Productos;
+use App\Models\productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
