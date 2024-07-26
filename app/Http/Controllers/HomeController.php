@@ -27,6 +27,7 @@ class HomeController extends Controller
             'n.contenido',
             'n.imagenPortada',
             )
+        ->orderBy('n.created_at', 'desc')
         ->get();
         
         $banners = DB::table('banners as b')
