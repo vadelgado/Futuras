@@ -172,7 +172,7 @@ export default function Dashboard({ auth, productos }) {
         },
         {
             name: "Precio",
-            selector: (row) => row.precio,
+            selector: (row) => (row.precio == 50 ? "Info WhatsApp" : row.precio),
             sortable: true,
         },
         {

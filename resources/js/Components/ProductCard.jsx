@@ -45,20 +45,22 @@ const ProductCard = ({ product }) => {
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-                            {product.precio.toLocaleString("es-CO", {
-                                style: "currency",
-                                currency: "COP",
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0,
-                            })}{" "}
-                            (COP)
+                            {product.precio === 50
+                                ? "Info WhatsApp"
+                                : product.precio.toLocaleString("es-CO", {
+                                    style: "currency",
+                                    currency: "COP",
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0,
+                                  })}{" "}
+                            {product.precio !== 50 && "(COP)"}
                         </span>
                         <button
                             onClick={handleWhatsAppClick}
                             className="px-3 py-1 text-sm font-semibold text-white bg-green-500 rounded hover:bg-green-700"
                         >
-                                                                    <i className="mr-2 fa-brands fa-whatsapp"></i>
-                                                                    Preguntar por WhatsApp
+                            <i className="mr-2 fa-brands fa-whatsapp"></i>
+                            Preguntar por WhatsApp
                         </button>
                     </div>
                     <div className="flex items-center justify-between mt-2">
@@ -78,7 +80,7 @@ const ProductCard = ({ product }) => {
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                             >
-                                <path d="M3 4a1 1 0 011-1h2.586l1-1H12l1 1H16a1 1 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm11 2a1 1 0 100 2H6a1 1 000-2h8z" />
+                                <path d="M3 4a1 1 0 011-1h2.586l1-1H12l1 1H16a1 1 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm11 2a1 1 100 2H6a1 1 000-2h8z" />
                             </svg>
                             Stock: {product.stock}
                         </span>

@@ -34,18 +34,19 @@ export default function Show({ auth, producto, galeriaProductos }) {
                                         {producto.descripcion}
                                     </p>
                                     <p className="mt-4 text-lg font-semibold text-gray-800 dark:text-gray-100">
-                                        {producto.precio.toLocaleString(
-                                            "es-CO",
-                                            {
-                                                style: "currency",
-                                                currency: "COP",
-                                                minimumFractionDigits: 0,
-                                                maximumFractionDigits: 0,
-                                            }
-                                        )}{" "}
-                                        (COP)
+                                        {producto.precio === 50
+                                            ? "Info WhatsApp"
+                                            : producto.precio.toLocaleString(
+                                                "es-CO",
+                                                {
+                                                    style: "currency",
+                                                    currency: "COP",
+                                                    minimumFractionDigits: 0,
+                                                    maximumFractionDigits: 0,
+                                                }
+                                            )}{" "}
+                                        {producto.precio !== 50 && "(COP)"}
                                     </p>
-
                                     <p className="mt-4 text-sm text-gray-600 dark:text-gray-300">
                                         Stock: {producto.stock}
                                     </p>
