@@ -15,7 +15,7 @@ class NoticiasController extends Controller
     public function index()
     {
         $noticias = Noticias::all()
-        ->orderby('created_at', 'desc');
+        ->orderBy('created_at', 'desc');
         return Inertia::render('Noticias/Index', [
             'noticias' => $noticias
         ]);
