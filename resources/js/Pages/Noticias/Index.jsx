@@ -127,16 +127,19 @@ export default function Dashboard({ auth, noticias }) {
             name: "#",
             selector: (row, index) => index + 1,
             sortable: true,
+            maxWidth: "50px"
         },
         {
             name: "Nombre",
             selector: (row) => row.titulo,
             sortable: true,
+            cell: (row) => <div className="w-40 truncate">{row.titulo}</div>,
         },
         {
             name: "Contenido",
             selector: (row) => row.contenido,
             sortable: true,
+            cell: (row) => <div className="truncate w-60">{row.contenido}</div>,
         },
         {
             name: "Portada",
@@ -150,6 +153,7 @@ export default function Dashboard({ auth, noticias }) {
                 </div>
             ),
             sortable: false,
+            maxWidth: "80px"
         },
         {
             name: "Editar",
@@ -169,6 +173,7 @@ export default function Dashboard({ auth, noticias }) {
                 </WarningButton>
             ),
             ignoreRowClick: true,
+            maxWidth: "80px"
         },
         {
             name: "Eliminar",
@@ -178,6 +183,7 @@ export default function Dashboard({ auth, noticias }) {
                 </DangerButton>
             ),
             ignoreRowClick: true,
+            maxWidth: "80px"
         },
         {
             name: "Fotos",
@@ -186,10 +192,11 @@ export default function Dashboard({ auth, noticias }) {
                 className="text-white bg-black hover:bg-gray-800 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center"
                 href={`/AdministradorFotosNoticias?noticia_id=${row.id}`}
             >
-                <i className="mr-2 fa-solid fa-image"> Fotos</i>
+                <i className="fa-solid fa-image"></i>
             </a>
             ),
             ignoreRowClick: true,
+            maxWidth: "100px"
         }
     ];
 
@@ -245,6 +252,33 @@ export default function Dashboard({ auth, noticias }) {
                         responsive
                         fixedHeader
                         noDataComponent={<div>No hay noticias registradas</div>}
+                        customStyles={{
+                            header: {
+                                style: {
+                                    minHeight: '56px',
+                                },
+                            },
+                            headRow: {
+                                style: {
+                                    backgroundColor: '#f8f9fa',
+                                },
+                            },
+                            headCells: {
+                                style: {
+                                    '&:not(:last-of-type)': {
+                                        borderRight: '1px solid rgba(224, 224, 224, 0.8)',
+                                    },
+                                    fontWeight: 'bold',
+                                },
+                            },
+                            cells: {
+                                style: {
+                                    '&:not(:last-of-type)': {
+                                        borderRight: '1px solid rgba(224, 224, 224, 0.8)',
+                                    },
+                                },
+                            },
+                        }}
                     />
                 </div>
             </div>
