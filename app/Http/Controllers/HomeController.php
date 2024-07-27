@@ -130,7 +130,7 @@ class HomeController extends Controller
     public function sedes ()
     {
         $sedes = DB::table('sedes as s')
-        
+        ->where('s.estado', 'activa')
         ->select(
             's.id',
             's.nombre',

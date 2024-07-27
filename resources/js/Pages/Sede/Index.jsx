@@ -327,276 +327,305 @@ export default function Dashboard({ auth, sedes }) {
         >
             <Head title="Panel Sedes" />
             <div className="flex flex-col min-h-screen">
-            <main className="flex-grow">
+                <main className="flex-grow">
+                    <div className="container p-6 mx-auto mt-6 bg-white">
+                        <div className="flex justify-end mt-2 mb-3">
+                            <PrimaryButton onClick={() => handleModal(1)}>
+                                <i className="mr-2 fa-solid fa-plus-circle">
+                                    Añadir Sede
+                                </i>
+                            </PrimaryButton>
+                        </div>
 
-            <div className="container p-6 mx-auto mt-6 bg-white">
-                <div className="flex justify-end mt-2 mb-3">
-                    <PrimaryButton onClick={() => handleModal(1)}>
-                        <i className="mr-2 fa-solid fa-plus-circle">
-                            Añadir Sede
-                        </i>
-                    </PrimaryButton>
-                </div>
+                        <div className="mb-4">
+                            <input
+                                type="text"
+                                className="w-full p-2 border rounded"
+                                placeholder="Buscar por Nombre del Producto"
+                                value={filterText}
+                                onChange={(e) => setFilterText(e.target.value)}
+                            />
+                        </div>
 
-                <div className="mb-4">
-                    <input
-                        type="text"
-                        className="w-full p-2 border rounded"
-                        placeholder="Buscar por Nombre del Producto"
-                        value={filterText}
-                        onChange={(e) => setFilterText(e.target.value)}
-                    />
-                </div>
-
-                <div className="overflow-x-auto">
-                    <DataTable
-                        title="Sedes Registradas"
-                        columns={columns}
-                        data={filteredNombre}
-                        pagination
-                        paginationComponentOptions={paginationComponentOptions}
-                        responsive
-                        fixedHeader
-                        noDataComponent={<div>No hay Sedes Registradas</div>}
-                    />
-                </div>
-            </div>
-
-            <Modal show={modal} onClose={closeModal}>
-                <h2 className="text-lg font-medium text-gray-900">{title}</h2>
-                <form onSubmit={save} className="p-6">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    <FormField
-                        htmlFor="nombre"
-                        label={
-                            <>
-                                <span>Nombre de la sede</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="nombre"
-                        type="text"
-                        name="nombre"
-                        ref={nombreInput}
-                        placeholder="Nombre del Producto"
-                        value={data.nombre}
-                        onChange={handleInputChange}
-                        errorMessage={errors.nombre}
-                    />
-
-                    <ImgField
-                        htmlFor="imagen"
-                        label="Foto Principal"
-                        id="imagen"
-                        name="imagen"
-                        ref={imagenInput}
-                        onChange={handleFileChange}
-                        errorMessage={errors.imagen}
-                    />
-
-                    <FormField
-                        htmlFor="direccion"
-                        label={
-                            <>
-                                <span>Dirección</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="direccion"
-                        type="text"
-                        name="direccion"
-                        ref={direccionInput}
-                        placeholder="Dirección"
-                        value={data.direccion}
-                        onChange={handleInputChange}
-                        errorMessage={errors.direccion}
-                    />
-
-                    <FormField
-                        htmlFor="telefono"
-                        label={
-                            <>
-                                <span>Teléfono</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="telefono"
-                        type="number"
-                        name="telefono"
-                        ref={telefonoInput}
-                        placeholder="Teléfono"
-                        value={data.telefono}
-                        onChange={handleInputChange}
-                        errorMessage={errors.telefono}
-                    />
-
-                    <FormField
-                        htmlFor="telefonoDos"
-                        label={
-                            <>
-                                <span>Teléfono Dos</span>
-                            </>
-                        }
-                        id="telefonoDos"
-                        type="number"
-                        name="telefonoDos"
-                        ref={telefonoDosInput}
-                        placeholder="Teléfono Dos"
-                        value={data.telefonoDos}
-                        onChange={handleInputChange}
-                        errorMessage={errors.telefonoDos}
-                    />
-
-                    <FormField
-                        htmlFor="telefonoTres"
-                        label={
-                            <>
-                                <span>Teléfono Tres</span>
-                            </>
-                        }
-                        id="telefonoTres"
-                        type="number"
-                        name="telefonoTres"
-                        ref={telefonoTresInput}
-                        placeholder="Teléfono Tres"
-                        value={data.telefonoTres}
-                        onChange={handleInputChange}
-                        errorMessage={errors.telefonoTres}
-                    />
-
-                    <FormField
-                        htmlFor="email"
-                        label={
-                            <>
-                                <span>Correo Electrónico</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="email"
-                        type="text"
-                        name="email"
-                        ref={emailInput}
-                        placeholder="Correo Electrónico"
-                        value={data.email}
-                        onChange={handleInputChange}
-                        errorMessage={errors.email}
-                    />
-
-                    <FormField
-                        htmlFor="encargado"
-                        label={
-                            <>
-                                <span>Encargado</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="encargado"
-                        type="text"
-                        name="encargado"
-                        ref={encargadoInput}
-                        placeholder="Encargado"
-                        value={data.encargado}
-                        onChange={handleInputChange}
-                        errorMessage={errors.encargado}
-                    />
-
-                    <FormField
-                        htmlFor="coordenadas"
-                        label={
-                            <>
-                                <span>Google Maps</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="coordenadas"
-                        type="text"
-                        name="coordenadas"
-                        ref={coordenadasInput}
-                        placeholder="Google Maps"
-                        value={data.coordenadas}
-                        onChange={handleInputChange}
-                        errorMessage={errors.coordenadas}
-                    />
-
-                    <FormField
-                        htmlFor="diasSemana"
-                        label={
-                            <>
-                                <span>Días de Atención</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="diasSemana"
-                        type="text"
-                        name="diasSemana"
-                        ref={diasSemanaInput}
-                        placeholder="Días de Atención"
-                        value={data.diasSemana}
-                        onChange={handleInputChange}
-                        errorMessage={errors.diasSemana}
-                    />
-
-                    <FormField
-                        htmlFor="horario"
-                        label={
-                            <>
-                                <span>Horario</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="horario"
-                        type="text"
-                        name="horario"
-                        ref={horarioInput}
-                        placeholder="Horario"
-                        value={data.horario}
-                        onChange={handleInputChange}
-                        errorMessage={errors.horario}
-                    />
-
-                    <SelectField
-                        htmlFor="estado"
-                        label={
-                            <>
-                                <span>Estado</span>
-                                <span className="text-red-500">*</span>
-                            </>
-                        }
-                        id="estado"
-                        ref={estadoInput}
-                        name="estado"
-                        value={data.estado}
-                        onChange={handleInputChange}
-                        errorMessage={errors.estado}
-                        options={[
-                            {
-                                value: "",
-                                label: "Seleccione...",
-                                disabled: true,
-                            },
-                            { value: "activa", label: "Activa" },
-                            { value: "inactiva", label: "Inactiva" },
-                            { value: "mantenimiento", label: "En Mantenimiento"}
-                        ]}
-                    />
-
+                        <div className="overflow-x-auto">
+                            <DataTable
+                                title="Sedes Registradas"
+                                columns={columns}
+                                data={filteredNombre}
+                                pagination
+                                paginationComponentOptions={
+                                    paginationComponentOptions
+                                }
+                                responsive
+                                fixedHeader
+                                noDataComponent={
+                                    <div>No hay Sedes Registradas</div>
+                                }
+                            />
+                        </div>
                     </div>
 
-                    <div className="flex justify-end mt-4">
-                        <SecondaryButton onClick={closeModal}>
-                            Cancelar
-                        </SecondaryButton>
-                        <PrimaryButton
-                            className="ml-2"
-                            type="submit"
-                            disabled={processing}
-                        >
-                            {processing ? "Guardando..." : "Guardar"}
-                        </PrimaryButton>
-                    </div>
-                </form>
-            </Modal>
-            </main>
+                    <Modal show={modal} onClose={closeModal}>
+                        <h2 className="text-lg font-medium text-gray-900">
+                            {title}
+                        </h2>
+                        <form onSubmit={save} className="p-6">
+                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <FormField
+                                    htmlFor="nombre"
+                                    label={
+                                        <>
+                                            <span>Nombre de la sede</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="nombre"
+                                    type="text"
+                                    name="nombre"
+                                    ref={nombreInput}
+                                    placeholder="Nombre del Producto"
+                                    value={data.nombre}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.nombre}
+                                />
+
+                                <ImgField
+                                    htmlFor="imagen"
+                                    label="Foto Principal"
+                                    id="imagen"
+                                    name="imagen"
+                                    ref={imagenInput}
+                                    onChange={handleFileChange}
+                                    errorMessage={errors.imagen}
+                                />
+
+                                <FormField
+                                    htmlFor="direccion"
+                                    label={
+                                        <>
+                                            <span>Dirección</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="direccion"
+                                    type="text"
+                                    name="direccion"
+                                    ref={direccionInput}
+                                    placeholder="Dirección"
+                                    value={data.direccion}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.direccion}
+                                />
+
+                                <FormField
+                                    htmlFor="telefono"
+                                    label={
+                                        <>
+                                            <span>Teléfono</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="telefono"
+                                    type="number"
+                                    name="telefono"
+                                    ref={telefonoInput}
+                                    placeholder="Teléfono"
+                                    value={data.telefono}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.telefono}
+                                />
+
+                                <FormField
+                                    htmlFor="telefonoDos"
+                                    label={
+                                        <>
+                                            <span>Teléfono Dos</span>
+                                        </>
+                                    }
+                                    id="telefonoDos"
+                                    type="number"
+                                    name="telefonoDos"
+                                    ref={telefonoDosInput}
+                                    placeholder="Teléfono Dos"
+                                    value={data.telefonoDos}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.telefonoDos}
+                                />
+
+                                <FormField
+                                    htmlFor="telefonoTres"
+                                    label={
+                                        <>
+                                            <span>Teléfono Tres</span>
+                                        </>
+                                    }
+                                    id="telefonoTres"
+                                    type="number"
+                                    name="telefonoTres"
+                                    ref={telefonoTresInput}
+                                    placeholder="Teléfono Tres"
+                                    value={data.telefonoTres}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.telefonoTres}
+                                />
+
+                                <FormField
+                                    htmlFor="email"
+                                    label={
+                                        <>
+                                            <span>Correo Electrónico</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="email"
+                                    type="text"
+                                    name="email"
+                                    ref={emailInput}
+                                    placeholder="Correo Electrónico"
+                                    value={data.email}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.email}
+                                />
+                                                                <SelectField
+                                    htmlFor="estado"
+                                    label={
+                                        <>
+                                            <span>Estado</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="estado"
+                                    ref={estadoInput}
+                                    name="estado"
+                                    value={data.estado}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.estado}
+                                    options={[
+                                        {
+                                            value: "",
+                                            label: "Seleccione...",
+                                            disabled: true,
+                                        },
+                                        { value: "activa", label: "Activa" },
+                                        {
+                                            value: "inactiva",
+                                            label: "Inactiva",
+                                        },
+                                        {
+                                            value: "mantenimiento",
+                                            label: "En Mantenimiento",
+                                        },
+                                    ]}
+                                />
+
+                                <FormField
+                                    htmlFor="encargado"
+                                    label={
+                                        <>
+                                            <span>Encargado</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="encargado"
+                                    type="text"
+                                    name="encargado"
+                                    ref={encargadoInput}
+                                    placeholder="Encargado"
+                                    value={data.encargado}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.encargado}
+                                />
+
+                                <FormField
+                                    htmlFor="coordenadas"
+                                    label={
+                                        <>
+                                            <span>Google Maps</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="coordenadas"
+                                    type="text"
+                                    name="coordenadas"
+                                    ref={coordenadasInput}
+                                    placeholder="Google Maps"
+                                    value={data.coordenadas}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.coordenadas}
+                                />
+
+                                <FormField
+                                    htmlFor="diasSemana"
+                                    label={
+                                        <>
+                                            <span>Días de Atención</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="diasSemana"
+                                    type="text"
+                                    name="diasSemana"
+                                    ref={diasSemanaInput}
+                                    placeholder="Días de Atención"
+                                    value={data.diasSemana}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.diasSemana}
+                                />
+
+                                <FormField
+                                    htmlFor="horario"
+                                    label={
+                                        <>
+                                            <span>Horario</span>
+                                            <span className="text-red-500">
+                                                *
+                                            </span>
+                                        </>
+                                    }
+                                    id="horario"
+                                    type="text"
+                                    name="horario"
+                                    ref={horarioInput}
+                                    placeholder="Horario"
+                                    value={data.horario}
+                                    onChange={handleInputChange}
+                                    errorMessage={errors.horario}
+                                />
+
+
+                            </div>
+
+                            <div className="flex justify-end mt-4">
+                                <SecondaryButton onClick={closeModal}>
+                                    Cancelar
+                                </SecondaryButton>
+                                <PrimaryButton
+                                    className="ml-2"
+                                    type="submit"
+                                    disabled={processing}
+                                >
+                                    {processing ? "Guardando..." : "Guardar"}
+                                </PrimaryButton>
+                            </div>
+                        </form>
+                    </Modal>
+                </main>
             </div>
 
             <Footer auth={auth} />
