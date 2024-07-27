@@ -159,26 +159,31 @@ export default function Dashboard({ auth, productos }) {
             name: "#",
             selector: (row, index) => index + 1,
             sortable: true,
+            maxWidth: "50px"
         },
         {
             name: "Nombre",
             selector: (row) => row.nombre,
             sortable: true,
+            cell: (row) => <div className="w-40 truncate">{row.nombre}</div>,
         },
         {
             name: "Descripción",
             selector: (row) => row.descripcion,
             sortable: true,
+            cell: (row) => <div className="w-64 truncate">{row.descripcion}</div>,
         },
         {
             name: "Precio",
             selector: (row) => (row.precio == 50 ? "Info WhatsApp" : row.precio),
             sortable: true,
+            maxWidth: "80px"
         },
         {
-            name: "stock",
+            name: "Stock",
             selector: (row) => row.stock,
             sortable: true,
+            maxWidth: "80px"
         },
         {
             name: "Imagen Principal",
@@ -192,21 +197,25 @@ export default function Dashboard({ auth, productos }) {
                 </div>
             ),
             sortable: false,
+            maxWidth: "100px"
         },
         {
             name: "Categoría",
             selector: (row) => row.categoria,
             sortable: true,
+            cell: (row) => <div className="w-32 truncate">{row.categoria}</div>,
         },
         {
             name: "Especificaciones",
             selector: (row) => row.tipoEspecificaciones,
             sortable: true,
+            cell: (row) => <div className="w-40 truncate">{row.tipoEspecificaciones}</div>,
         },
         {
             name: "Valor Especificaciones",
             selector: (row) => row.valorEspecificaciones,
             sortable: true,
+            cell: (row) => <div className="w-40 truncate">{row.valorEspecificaciones}</div>,
         },
         {
             name: "Editar",
@@ -223,8 +232,7 @@ export default function Dashboard({ auth, productos }) {
                             row.imagen,
                             row.categoria,
                             row.tipoEspecificaciones,
-                            row.valorEspecificaciones                          
-
+                            row.valorEspecificaciones
                         )
                     }
                 >
@@ -232,6 +240,7 @@ export default function Dashboard({ auth, productos }) {
                 </WarningButton>
             ),
             ignoreRowClick: true,
+            maxWidth: "80px"
         },
         {
             name: "Eliminar",
@@ -241,6 +250,7 @@ export default function Dashboard({ auth, productos }) {
                 </DangerButton>
             ),
             ignoreRowClick: true,
+            maxWidth: "80px"
         },
         {
             name: "Fotos",
@@ -253,6 +263,7 @@ export default function Dashboard({ auth, productos }) {
             </a>
             ),
             ignoreRowClick: true,
+            maxWidth: "100px"
         }
     ];
 
