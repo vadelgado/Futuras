@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
                     <div className="flex items-center justify-between">
                         <span className="text-xl font-semibold text-gray-800 dark:text-gray-100">
                             {product.precio === 50
-                                ? "Info WhatsApp"
+                                ? " "
                                 : product.precio.toLocaleString("es-CO", {
                                     style: "currency",
                                     currency: "COP",

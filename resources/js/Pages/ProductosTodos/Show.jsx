@@ -35,7 +35,7 @@ export default function Show({ auth, producto, galeriaProductos }) {
                                     </p>
                                     <p className="mt-4 text-lg font-semibold text-gray-800 dark:text-gray-100">
                                         {producto.precio === 50
-                                            ? "Info WhatsApp"
+                                            ? " "
                                             : producto.precio.toLocaleString(
                                                 "es-CO",
                                                 {
